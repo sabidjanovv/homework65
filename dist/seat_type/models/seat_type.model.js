@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeatType = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const seat_model_1 = require("../../seat/models/seat.model");
 let SeatType = class SeatType extends sequelize_typescript_1.Model {
 };
 exports.SeatType = SeatType;
@@ -30,6 +31,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], SeatType.prototype, "name", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => seat_model_1.Seat),
+    __metadata("design:type", Array)
+], SeatType.prototype, "venue_seats", void 0);
 exports.SeatType = SeatType = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "seat_type" })
 ], SeatType);
