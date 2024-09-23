@@ -25,7 +25,7 @@ let VenueTypeService = class VenueTypeService {
         return Venue_type;
     }
     async getAllVenueType() {
-        return this.venueTypeModel.findAll();
+        return this.venueTypeModel.findAll({ include: { all: true } });
     }
     async getVenueTypeById(id) {
         return this.venueTypeModel.findByPk(id);

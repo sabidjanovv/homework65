@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TicketStatus = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const ticket_model_1 = require("../../ticket/models/ticket.model");
 let TicketStatus = class TicketStatus extends sequelize_typescript_1.Model {
 };
 exports.TicketStatus = TicketStatus;
@@ -28,6 +29,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], TicketStatus.prototype, "name", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => ticket_model_1.Ticket),
+    __metadata("design:type", Array)
+], TicketStatus.prototype, "tickets", void 0);
 exports.TicketStatus = TicketStatus = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "ticket_status" })
 ], TicketStatus);

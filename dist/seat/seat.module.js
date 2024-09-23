@@ -20,6 +20,7 @@ exports.SeatModule = SeatModule = __decorate([
         imports: [sequelize_1.SequelizeModule.forFeature([seat_model_1.Seat])],
         controllers: [seat_controller_1.SeatController],
         providers: [seat_service_1.SeatService],
+        exports: [seat_service_1.SeatService],
     })
 ], SeatModule);
 //# sourceMappingURL=seat.module.js.map

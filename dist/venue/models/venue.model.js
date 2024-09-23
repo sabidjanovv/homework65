@@ -12,9 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Venue = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const district_model_1 = require("../../district/models/district.model");
+const event_model_1 = require("../../event/models/event.model");
 const region_model_1 = require("../../region/models/region.model");
 const seat_model_1 = require("../../seat/models/seat.model");
 const venue_photo_model_1 = require("../../venue_photo/models/venue_photo.model");
+const venue_type_model_1 = require("../../venue_type/models/venue_type.model");
+const venue_venue_type_model_1 = require("../../venue_venue_type/models/venue_venue_type.model");
 let Venue = class Venue extends sequelize_typescript_1.Model {
 };
 exports.Venue = Venue;
@@ -58,6 +61,12 @@ __decorate([
     __metadata("design:type", String)
 ], Venue.prototype, "phone", void 0);
 __decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.ARRAY(sequelize_typescript_1.DataType.STRING),
+    }),
+    __metadata("design:type", Array)
+], Venue.prototype, "schema", void 0);
+__decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => region_model_1.Region),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
@@ -71,7 +80,7 @@ __decorate([
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => district_model_1.District),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.INTEGER
+        type: sequelize_typescript_1.DataType.INTEGER,
     }),
     __metadata("design:type", Number)
 ], Venue.prototype, "districtId", void 0);
@@ -87,6 +96,14 @@ __decorate([
     (0, sequelize_typescript_1.HasMany)(() => seat_model_1.Seat),
     __metadata("design:type", Array)
 ], Venue.prototype, "seats", void 0);
+__decorate([
+    (0, sequelize_typescript_1.BelongsToMany)(() => venue_type_model_1.VenueType, () => venue_venue_type_model_1.VenueVenueType),
+    __metadata("design:type", Array)
+], Venue.prototype, "venue_types", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => event_model_1.Event),
+    __metadata("design:type", Array)
+], Venue.prototype, "events", void 0);
 exports.Venue = Venue = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "venue", timestamps: false })
 ], Venue);

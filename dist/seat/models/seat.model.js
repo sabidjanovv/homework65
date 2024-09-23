@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Seat = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const seat_type_model_1 = require("../../seat_type/models/seat_type.model");
+const ticket_model_1 = require("../../ticket/models/ticket.model");
 const venue_model_1 = require("../../venue/models/venue.model");
 let Seat = class Seat extends sequelize_typescript_1.Model {
 };
@@ -75,6 +76,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Seat.prototype, "locationInSchema", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasOne)(() => ticket_model_1.Ticket),
+    __metadata("design:type", Array)
+], Seat.prototype, "ticket", void 0);
 exports.Seat = Seat = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "seat" })
 ], Seat);

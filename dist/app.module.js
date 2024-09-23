@@ -34,6 +34,19 @@ const cart_status_module_1 = require("./cart_status/cart_status.module");
 const cart_status_model_1 = require("./cart_status/models/cart_status.model");
 const booking_status_module_1 = require("./booking_status/booking_status.module");
 const booking_status_model_1 = require("./booking_status/models/booking_status.model");
+const venue_venue_type_module_1 = require("./venue_venue_type/venue_venue_type.module");
+const venue_venue_type_model_1 = require("./venue_venue_type/models/venue_venue_type.model");
+const roles_module_1 = require("./roles/roles.module");
+const roles_model_1 = require("./roles/models/roles.model");
+const users_module_1 = require("./users/users.module");
+const user_model_1 = require("./users/models/user.model");
+const user_role_model_1 = require("./users/models/user-role.model");
+const event_type_module_1 = require("./event_type/event_type.module");
+const event_module_1 = require("./event/event.module");
+const event_type_model_1 = require("./event_type/models/event_type.model");
+const event_model_1 = require("./event/models/event.model");
+const ticket_module_1 = require("./ticket/ticket.module");
+const ticket_model_1 = require("./ticket/models/ticket.model");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -60,11 +73,18 @@ exports.AppModule = AppModule = __decorate([
                     language_model_1.Language,
                     ticket_status_model_1.TicketStatus,
                     cart_status_model_1.CartStatus,
-                    booking_status_model_1.BookingStatus
+                    booking_status_model_1.BookingStatus,
+                    venue_venue_type_model_1.VenueVenueType,
+                    roles_model_1.Roles,
+                    user_model_1.User,
+                    user_role_model_1.UserRoles,
+                    event_model_1.Event,
+                    event_type_model_1.EventType,
+                    ticket_model_1.Ticket
                 ],
                 autoLoadModels: true,
                 sync: { alter: true },
-                logging: true,
+                logging: false,
             }),
             human_category_module_1.HumanCategoryModule,
             seat_type_module_1.SeatTypeModule,
@@ -78,6 +98,12 @@ exports.AppModule = AppModule = __decorate([
             ticket_status_module_1.TicketStatusModule,
             cart_status_module_1.CartStatusModule,
             booking_status_module_1.BookingStatusModule,
+            venue_venue_type_module_1.VenueVenueTypeModule,
+            roles_module_1.RolesModule,
+            users_module_1.UsersModule,
+            event_type_module_1.EventTypeModule,
+            event_module_1.EventModule,
+            ticket_module_1.TicketModule,
         ],
         controllers: [],
         providers: [],

@@ -25,6 +25,19 @@ import { CartStatusModule } from './cart_status/cart_status.module';
 import { CartStatus } from "./cart_status/models/cart_status.model";
 import { BookingStatusModule } from './booking_status/booking_status.module';
 import { BookingStatus } from "./booking_status/models/booking_status.model";
+import { VenueVenueTypeModule } from './venue_venue_type/venue_venue_type.module';
+import { VenueVenueType } from "./venue_venue_type/models/venue_venue_type.model";
+import { RolesModule } from './roles/roles.module';
+import { Roles } from "./roles/models/roles.model";
+import { UsersModule } from './users/users.module';
+import { User } from "./users/models/user.model";
+import { UserRoles } from "./users/models/user-role.model";
+import { EventTypeModule } from './event_type/event_type.module';
+import { EventModule } from './event/event.module';
+import { EventType } from "./event_type/models/event_type.model";
+import { Event } from "./event/models/event.model"
+import { TicketModule } from './ticket/ticket.module';
+import { Ticket } from "./ticket/models/ticket.model";
 
 @Module({
   imports: [
@@ -48,11 +61,18 @@ import { BookingStatus } from "./booking_status/models/booking_status.model";
         Language,
         TicketStatus,
         CartStatus,
-        BookingStatus
+        BookingStatus,
+        VenueVenueType,
+        Roles,
+        User,
+        UserRoles,
+        Event,
+        EventType,
+        Ticket
       ],
       autoLoadModels: true,
       sync: { alter: true },
-      logging: true,
+      logging: false,
     }),
     HumanCategoryModule,
     SeatTypeModule,
@@ -66,6 +86,12 @@ import { BookingStatus } from "./booking_status/models/booking_status.model";
     TicketStatusModule,
     CartStatusModule,
     BookingStatusModule,
+    VenueVenueTypeModule,
+    RolesModule,
+    UsersModule,
+    EventTypeModule,
+    EventModule,
+    TicketModule,
   ],
   controllers: [],
   providers: [],

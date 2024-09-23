@@ -11,7 +11,7 @@ export class SeatController {
   create(@Body() createSeatDto: CreateSeatDto) {
     return this.seatService.create(createSeatDto);
   }
-
+  
   @Get()
   findAll() {
     return this.seatService.findAll();

@@ -8,5 +8,6 @@ import { Seat } from './models/seat.model';
   imports: [SequelizeModule.forFeature([Seat])],
   controllers: [SeatController],
   providers: [SeatService],
+  exports: [SeatService],
 })
 export class SeatModule {}

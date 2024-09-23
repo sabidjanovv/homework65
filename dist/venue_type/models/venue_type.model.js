@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VenueType = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const venue_model_1 = require("../../venue/models/venue.model");
+const venue_venue_type_model_1 = require("../../venue_venue_type/models/venue_venue_type.model");
 let VenueType = class VenueType extends sequelize_typescript_1.Model {
 };
 exports.VenueType = VenueType;
@@ -30,6 +32,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], VenueType.prototype, "name", void 0);
+__decorate([
+    (0, sequelize_typescript_1.BelongsToMany)(() => venue_model_1.Venue, () => venue_venue_type_model_1.VenueVenueType),
+    __metadata("design:type", Array)
+], VenueType.prototype, "venues", void 0);
 exports.VenueType = VenueType = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "venue_type" })
 ], VenueType);

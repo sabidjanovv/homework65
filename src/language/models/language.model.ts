@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Event } from "src/event/models/event.model";
 
 
 interface LanguageCreationAttr{
@@ -19,4 +20,7 @@ export class Language extends Model<Language, LanguageCreationAttr> {
     unique: true,
   })
   name: string;
+
+  @HasMany(() => Event)
+  events: Event[];
 }

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HumanCategory = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const event_model_1 = require("../../event/models/event.model");
 let HumanCategory = class HumanCategory extends sequelize_typescript_1.Model {
 };
 exports.HumanCategory = HumanCategory;
@@ -48,6 +49,10 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], HumanCategory.prototype, "gender", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => event_model_1.Event),
+    __metadata("design:type", Array)
+], HumanCategory.prototype, "events", void 0);
 exports.HumanCategory = HumanCategory = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "human_category" })
 ], HumanCategory);

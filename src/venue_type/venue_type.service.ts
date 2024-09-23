@@ -16,7 +16,7 @@ export class VenueTypeService {
   }
 
   async getAllVenueType(): Promise<VenueType[]> {
-    return this.venueTypeModel.findAll();
+    return this.venueTypeModel.findAll({include:{all:true}});
   }
 
   async getVenueTypeById(id: number): Promise<VenueType> {

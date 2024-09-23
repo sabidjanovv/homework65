@@ -1,4 +1,5 @@
-import { Table, Column, DataType, Model } from "sequelize-typescript"
+import { Table, Column, DataType, Model, HasMany } from "sequelize-typescript"
+import { Event } from "src/event/models/event.model";
 
 interface HumanCategoryAttr{
     name: string,
@@ -7,34 +8,37 @@ interface HumanCategoryAttr{
     gender:number,
 }
 
-@Table({tableName:"human_category"})
-export class HumanCategory extends Model<HumanCategory,HumanCategoryAttr>{
-    @Column({
-        type: DataType.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-    })
-    id: number;
+@Table({ tableName: "human_category" })
+export class HumanCategory extends Model<HumanCategory, HumanCategoryAttr> {
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  })
+  id: number;
 
-    @Column({
-        type: DataType.STRING(100),
-        allowNull: false,
-        unique: true,
-    })
-    name: string;
-    
-    @Column({
-        type: DataType.SMALLINT,
-    })
-    start_age: number;
-    
-    @Column({
-        type: DataType.SMALLINT,
-    })
-    finish_age: number;
-    
-    @Column({
-        type: DataType.SMALLINT,
-    })
-    gender: number;
+  @Column({
+    type: DataType.STRING(100),
+    allowNull: false,
+    unique: true,
+  })
+  name: string;
+
+  @Column({
+    type: DataType.SMALLINT,
+  })
+  start_age: number;
+
+  @Column({
+    type: DataType.SMALLINT,
+  })
+  finish_age: number;
+
+  @Column({
+    type: DataType.SMALLINT,
+  })
+  gender: number;
+
+  @HasMany(() => Event)
+  events: Event[];
 }
