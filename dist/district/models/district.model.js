@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.District = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const customer_address_model_1 = require("../../customer_address/models/customer_address.model");
 const region_model_1 = require("../../region/models/region.model");
 const venue_model_1 = require("../../venue/models/venue.model");
 let District = class District extends sequelize_typescript_1.Model {
@@ -45,6 +46,10 @@ __decorate([
     (0, sequelize_typescript_1.HasMany)(() => venue_model_1.Venue),
     __metadata("design:type", Array)
 ], District.prototype, "venues", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => customer_address_model_1.CustomerAddress),
+    __metadata("design:type", Array)
+], District.prototype, "customerAddresses", void 0);
 exports.District = District = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "district", timestamps: false })
 ], District);

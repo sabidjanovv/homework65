@@ -49,7 +49,7 @@ export class User extends Model<User, IUserCreationAttr> {
 
   @Column({
     type: DataType.BOOLEAN,
-    defaultValue: true,
+    defaultValue: false,
   })
   is_active: boolean;
 

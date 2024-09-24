@@ -47,6 +47,15 @@ const event_type_model_1 = require("./event_type/models/event_type.model");
 const event_model_1 = require("./event/models/event.model");
 const ticket_module_1 = require("./ticket/ticket.module");
 const ticket_model_1 = require("./ticket/models/ticket.model");
+const auth_module_1 = require("./auth/auth.module");
+const customer_module_1 = require("./customer/customer.module");
+const customer_card_module_1 = require("./customer_card/customer_card.module");
+const customer_address_module_1 = require("./customer_address/customer_address.module");
+const customer_model_1 = require("./customer/models/customer.model");
+const customer_card_model_1 = require("./customer_card/models/customer_card.model");
+const customer_address_model_1 = require("./customer_address/models/customer_address.model");
+const country_module_1 = require("./country/country.module");
+const country_model_1 = require("./country/models/country.model");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -80,7 +89,11 @@ exports.AppModule = AppModule = __decorate([
                     user_role_model_1.UserRoles,
                     event_model_1.Event,
                     event_type_model_1.EventType,
-                    ticket_model_1.Ticket
+                    ticket_model_1.Ticket,
+                    customer_model_1.Customer,
+                    customer_card_model_1.CustomerCard,
+                    customer_address_model_1.CustomerAddress,
+                    country_model_1.Country,
                 ],
                 autoLoadModels: true,
                 sync: { alter: true },
@@ -104,6 +117,11 @@ exports.AppModule = AppModule = __decorate([
             event_type_module_1.EventTypeModule,
             event_module_1.EventModule,
             ticket_module_1.TicketModule,
+            auth_module_1.AuthModule,
+            customer_module_1.CustomerModule,
+            customer_card_module_1.CustomerCardModule,
+            customer_address_module_1.CustomerAddressModule,
+            country_module_1.CountryModule,
         ],
         controllers: [],
         providers: [],

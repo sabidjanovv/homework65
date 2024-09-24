@@ -1,10 +1,12 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { User } from "./models/user.model";
 import { RolesService } from "src/roles/roles.service";
 import { Roles } from "src/roles/models/roles.model";
+import { AddRemoveRoleDto } from "./dto/add-remove-role.dto";
+import { ActivateUserDto } from "./dto/activate-user.dto";
 
 @Injectable()
 export class UsersService {
@@ -33,10 +35,14 @@ export class UsersService {
     return newUser;
   }
 
+  findUserByEmail(email: string) {
+    return this.userModel.findOne({ where: { email: email } });
+  }
+
   findAll() {
     return this.userModel.findAll({
-      include:{all:true}
-    });;
+      include: { all: true },
+    });
   }
 
   findOne(id: number) {
@@ -49,5 +55,50 @@ export class UsersService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  async addRole(addRemoveRoleDto: AddRemoveRoleDto) {
+    const user = await this.userModel.findByPk(addRemoveRoleDto.userId);
+    const role = await this.rolesService.findRoleByValue(
+      addRemoveRoleDto.role_value
+    );
+    if (role && user) {
+      await user.$add("roles", role.id);
+      const updatedUser = await this.userModel.findByPk(
+        addRemoveRoleDto.userId,
+        { include: { all: true } }
+      );
+      return updatedUser;
+    }
+    throw new NotFoundException("User or role not found");
+  }
+
+  async removeRole(addRemoveRoleDto: AddRemoveRoleDto) {
+    const user = await this.userModel.findByPk(addRemoveRoleDto.userId);
+    const role = await this.rolesService.findRoleByValue(
+      addRemoveRoleDto.role_value
+    );
+    if (role && user) {
+      await user.$remove("roles", role.id);
+      const updatedUser = await this.userModel.findByPk(
+        addRemoveRoleDto.userId,
+        { include: { all: true } }
+      );
+      return updatedUser;
+    }
+    throw new NotFoundException("User or role not found");
+  }
+
+  async activateUser(activateUserDto: ActivateUserDto) {
+    const user = await this.userModel.findByPk(activateUserDto.userId);
+    
+    if (user) {
+      user.is_active = true;
+      await user.save()
+
+      return user;
+    }
+
+    throw new NotFoundException("User not found");
   }
 }

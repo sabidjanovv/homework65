@@ -12,3 +12,11 @@ import { TicketModule } from 'src/ticket/ticket.module';
   providers: [EventService],
 })
 export class EventModule {}
+
+
+
+// Savol: NestJSda @Module dekoratori nima uchun kerak?
+
+// Javob: @Module dekoratori NestJS'da modullarni yaratish uchun
+// ishlatiladi. U xizmatlar, kontrollerlar va boshqa modullarni 
+// bir joyda jamlaydi va ular o'rtasida bog'lanish o'rnatadi.

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Language = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const customer_model_1 = require("../../customer/models/customer.model");
 const event_model_1 = require("../../event/models/event.model");
 let Language = class Language extends sequelize_typescript_1.Model {
 };
@@ -35,6 +36,10 @@ __decorate([
     (0, sequelize_typescript_1.HasMany)(() => event_model_1.Event),
     __metadata("design:type", Array)
 ], Language.prototype, "events", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => customer_model_1.Customer),
+    __metadata("design:type", Array)
+], Language.prototype, "customers", void 0);
 exports.Language = Language = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: "language", timestamps: false })
 ], Language);

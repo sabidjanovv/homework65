@@ -1,4 +1,5 @@
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { CustomerAddress } from "src/customer_address/models/customer_address.model";
 import { District } from "src/district/models/district.model";
 import { Venue } from "src/venue/models/venue.model";
 
@@ -27,4 +28,7 @@ export class Region extends Model<Region, RegionCreationAttr> {
 
   @HasMany(() => Venue)
   venue_photos: Venue[];
+
+  @HasMany(() => CustomerAddress)
+  customerAddresses: CustomerAddress[];
 }

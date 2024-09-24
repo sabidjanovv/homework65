@@ -1,4 +1,5 @@
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Customer } from "src/customer/models/customer.model";
 import { Event } from "src/event/models/event.model";
 
 
@@ -23,4 +24,7 @@ export class Language extends Model<Language, LanguageCreationAttr> {
 
   @HasMany(() => Event)
   events: Event[];
+
+  @HasMany(() => Customer)
+  customers: Customer[];
 }

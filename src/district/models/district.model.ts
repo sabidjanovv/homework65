@@ -1,4 +1,5 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { CustomerAddress } from "src/customer_address/models/customer_address.model";
 import { Region } from "src/region/models/region.model";
 import { Venue } from "src/venue/models/venue.model";
 
@@ -33,4 +34,7 @@ export class District extends Model<District, DistrictCreationAttr> {
 
   @HasMany(() => Venue)
   venues: Venue[];
+
+  @HasMany(()=> CustomerAddress)
+  customerAddresses: CustomerAddress[];
 }
