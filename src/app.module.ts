@@ -47,6 +47,8 @@ import { CustomerCard } from "./customer_card/models/customer_card.model";
 import { CustomerAddress } from "./customer_address/models/customer_address.model";
 import { CountryModule } from "./country/country.module";
 import { Country } from "./country/models/country.model";
+import { AdminModule } from './admin/admin.module';
+import { Admin } from "./admin/models/admin.model";
 
 @Module({
   imports: [
@@ -82,6 +84,7 @@ import { Country } from "./country/models/country.model";
         CustomerCard,
         CustomerAddress,
         Country,
+        Admin
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -110,6 +113,7 @@ import { Country } from "./country/models/country.model";
     CustomerCardModule,
     CustomerAddressModule,
     CountryModule,
+    AdminModule,
   ],
   controllers: [],
   providers: [],

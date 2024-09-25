@@ -39,7 +39,6 @@ export class CustomerService {
       where: { id },
       returning: true,
     });
-    console.log(customer);
     return customer[1][0];
   }
 

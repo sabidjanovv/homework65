@@ -56,6 +56,8 @@ const customer_card_model_1 = require("./customer_card/models/customer_card.mode
 const customer_address_model_1 = require("./customer_address/models/customer_address.model");
 const country_module_1 = require("./country/country.module");
 const country_model_1 = require("./country/models/country.model");
+const admin_module_1 = require("./admin/admin.module");
+const admin_model_1 = require("./admin/models/admin.model");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -94,6 +96,7 @@ exports.AppModule = AppModule = __decorate([
                     customer_card_model_1.CustomerCard,
                     customer_address_model_1.CustomerAddress,
                     country_model_1.Country,
+                    admin_model_1.Admin
                 ],
                 autoLoadModels: true,
                 sync: { alter: true },
@@ -122,6 +125,7 @@ exports.AppModule = AppModule = __decorate([
             customer_card_module_1.CustomerCardModule,
             customer_address_module_1.CustomerAddressModule,
             country_module_1.CountryModule,
+            admin_module_1.AdminModule,
         ],
         controllers: [],
         providers: [],

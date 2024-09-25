@@ -3,10 +3,12 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt'
 import { UsersModule } from '../users/users.module'
+import { AdminModule } from 'src/admin/admin.module';
 
 @Module({
   imports:[
     UsersModule,
+    AdminModule,
     JwtModule.register({
       global:true,
       secret:"MySecretKey",

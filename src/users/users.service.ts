@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectModel } from "@nestjs/sequelize";
@@ -36,7 +40,14 @@ export class UsersService {
   }
 
   findUserByEmail(email: string) {
-    return this.userModel.findOne({ where: { email: email } });
+    return this.userModel.findOne({
+      where: { email },
+      include: {
+        all: true,
+        attributes: ["value"],       // Bu qatorlar bog'liqliklarni chiqarmaslik uchun
+        through: { attributes: [] }, // Bu qatorlar bog'liqliklarni chiqarmaslik uchun
+      },
+    });
   }
 
   findAll() {
@@ -46,7 +57,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.userModel.findByPk(id,{include: { all: true}});
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -91,10 +102,10 @@ export class UsersService {
 
   async activateUser(activateUserDto: ActivateUserDto) {
     const user = await this.userModel.findByPk(activateUserDto.userId);
-    
+
     if (user) {
       user.is_active = true;
-      await user.save()
+      await user.save();
 
       return user;
     }
