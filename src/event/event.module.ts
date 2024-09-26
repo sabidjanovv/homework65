@@ -4,10 +4,11 @@ import { EventController } from './event.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Event } from './models/event.model';
 import { TicketModule } from 'src/ticket/ticket.module';
+import { FileModule } from 'src/file/file.module';
 
 
 @Module({
-  imports:[SequelizeModule.forFeature([Event]), TicketModule],
+  imports: [SequelizeModule.forFeature([Event]), TicketModule, FileModule],
   controllers: [EventController],
   providers: [EventService],
 })

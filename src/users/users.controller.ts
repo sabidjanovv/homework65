@@ -8,9 +8,11 @@ import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { SelfGuard } from 'src/guards/self.guard';
 import { Roles } from 'src/decorator/roles-auth.decorator';
 import { RolesGuard } from 'src/guards/roles.guard';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { User } from './models/user.model';
 
 
-
+@ApiTags("Foydalanuvchilar")
 @Roles("ADMIN", "SUPERADMIN")
 @UseGuards(RolesGuard)
 @Controller("users")
@@ -22,12 +24,24 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @ApiOperation({ summary: "Barcha foydalanuvchini ro'yxatini ko'rish" })
+  @ApiResponse({
+    status: 200,
+    description: "List of users",
+    type: [User],
+  })
   @UseGuards(JwtAuthGuard)
   @Get("all")
   findAll() {
     return this.usersService.findAll();
   }
 
+  @ApiOperation({ summary: "Foydalanuvchini ID bo'yicha ko'rish" })
+  @ApiResponse({
+    status: 200,
+    description: "Get User by ID",
+    type: User,
+  })
   @UseGuards(SelfGuard)
   @UseGuards(JwtAuthGuard)
   @Get(":id")

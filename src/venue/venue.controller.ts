@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { VenueService } from './venue.service';
 import { CreateVenueDto } from './dto/create-venue.dto';
 import { UpdateVenueDto } from './dto/update-venue.dto';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('venue')
+@ApiTags("Tadbir otkazuvchi obyektlar")
+@Controller("venue")
 export class VenueController {
   constructor(private readonly venueService: VenueService) {}
 
@@ -17,19 +19,18 @@ export class VenueController {
     return this.venueService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: number) {
+  @Get(":id")
+  findOne(@Param("id") id: number) {
     return this.venueService.findOne(id);
   }
 
-  @Patch(':id')
-
-  update(@Param('id') id: number, @Body() updateVenueDto: UpdateVenueDto) {
+  @Patch(":id")
+  update(@Param("id") id: number, @Body() updateVenueDto: UpdateVenueDto) {
     return this.venueService.update(id, updateVenueDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: number) {
+  @Delete(":id")
+  remove(@Param("id") id: number) {
     return this.venueService.remove(id);
   }
 }

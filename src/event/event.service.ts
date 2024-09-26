@@ -4,26 +4,29 @@ import { UpdateEventDto } from "./dto/update-event.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { Event } from "./models/event.model";
 import { TicketService } from "src/ticket/ticket.service";
+import { FileService } from "src/file/file.service";
 
 @Injectable()
 export class EventService {
   constructor(
     @InjectModel(Event) private eventModel: typeof Event,
-      private readonly ticketService: TicketService
+    private readonly ticketService: TicketService,
+    private readonly fileService: FileService
   ) {}
-  create(createEventDto: CreateEventDto) {
-    return this.eventModel.create(createEventDto);
+  async create(createEventDto: CreateEventDto, image: any) {
+    const fileName = await this.fileService.saveFile(image);
+
+    return this.eventModel.create({ ...createEventDto, photo: fileName });
   }
 
   async findAll() {
-    const tickets = await this.ticketService.findSoldTickets()
-    const seat_arr = []
-    tickets.forEach(ticket => {
-      seat_arr.push(ticket.seat)
-    })
-    return {soldSeats:seat_arr}
+    const tickets = await this.ticketService.findSoldTickets();
+    const seat_arr = [];
+    tickets.forEach((ticket) => {
+      seat_arr.push(ticket.seat);
+    });
+    return { soldSeats: seat_arr };
   }
-
 
   findOne(id: number) {
     return this.eventModel.findOne({

@@ -16,12 +16,18 @@ exports.VenuePhotoService = void 0;
 const common_1 = require("@nestjs/common");
 const venue_photo_model_1 = require("./models/venue_photo.model");
 const sequelize_1 = require("@nestjs/sequelize");
+const file_service_1 = require("../file/file.service");
 let VenuePhotoService = class VenuePhotoService {
-    constructor(venuePhotoModel) {
+    constructor(venuePhotoModel, fileService) {
         this.venuePhotoModel = venuePhotoModel;
+        this.fileService = fileService;
     }
-    create(createVenuePhotoDto) {
-        return this.venuePhotoModel.create(createVenuePhotoDto);
+    async create(createVenuePhotoDto, image) {
+        const fileName = await this.fileService.saveFile(image);
+        return this.venuePhotoModel.create({
+            ...createVenuePhotoDto,
+            url: fileName,
+        });
     }
     findAll() {
         return this.venuePhotoModel.findAll({ include: { all: true } });
@@ -48,6 +54,6 @@ exports.VenuePhotoService = VenuePhotoService;
 exports.VenuePhotoService = VenuePhotoService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, sequelize_1.InjectModel)(venue_photo_model_1.VenuePhoto)),
-    __metadata("design:paramtypes", [Object])
+    __metadata("design:paramtypes", [Object, file_service_1.FileService])
 ], VenuePhotoService);
 //# sourceMappingURL=venue_photo.service.js.map

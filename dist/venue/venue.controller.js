@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const venue_service_1 = require("./venue.service");
 const create_venue_dto_1 = require("./dto/create-venue.dto");
 const update_venue_dto_1 = require("./dto/update-venue.dto");
+const swagger_1 = require("@nestjs/swagger");
 let VenueController = class VenueController {
     constructor(venueService) {
         this.venueService = venueService;
@@ -52,29 +53,30 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, update_venue_dto_1.UpdateVenueDto]),
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "remove", null);
 exports.VenueController = VenueController = __decorate([
-    (0, common_1.Controller)('venue'),
+    (0, swagger_1.ApiTags)("Tadbir otkazuvchi obyektlar"),
+    (0, common_1.Controller)("venue"),
     __metadata("design:paramtypes", [venue_service_1.VenueService])
 ], VenueController);
 //# sourceMappingURL=venue.controller.js.map

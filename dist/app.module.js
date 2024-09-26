@@ -58,6 +58,9 @@ const country_module_1 = require("./country/country.module");
 const country_model_1 = require("./country/models/country.model");
 const admin_module_1 = require("./admin/admin.module");
 const admin_model_1 = require("./admin/models/admin.model");
+const file_module_1 = require("./file/file.module");
+const serve_static_1 = require("@nestjs/serve-static");
+const node_path_1 = require("node:path");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -65,6 +68,9 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, node_path_1.join)(__dirname, "static")
+            }),
             sequelize_1.SequelizeModule.forRoot({
                 dialect: "postgres",
                 host: process.env.POSTGRES_HOST,
@@ -126,6 +132,7 @@ exports.AppModule = AppModule = __decorate([
             customer_address_module_1.CustomerAddressModule,
             country_module_1.CountryModule,
             admin_module_1.AdminModule,
+            file_module_1.FileModule,
         ],
         controllers: [],
         providers: [],

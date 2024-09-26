@@ -1,16 +1,24 @@
-import { Injectable } from '@nestjs/common';
-import { CreateVenuePhotoDto } from './dto/create-venue_photo.dto';
-import { UpdateVenuePhotoDto } from './dto/update-venue_photo.dto';
-import { VenuePhoto } from './models/venue_photo.model';
-import { InjectModel } from '@nestjs/sequelize';
+import { Injectable } from "@nestjs/common";
+import { CreateVenuePhotoDto } from "./dto/create-venue_photo.dto";
+import { UpdateVenuePhotoDto } from "./dto/update-venue_photo.dto";
+import { VenuePhoto } from "./models/venue_photo.model";
+import { InjectModel } from "@nestjs/sequelize";
+import { FileService } from "src/file/file.service";
 
 @Injectable()
 export class VenuePhotoService {
   constructor(
-    @InjectModel(VenuePhoto) private venuePhotoModel: typeof VenuePhoto
+    @InjectModel(VenuePhoto) private venuePhotoModel: typeof VenuePhoto,
+    private readonly fileService: FileService
   ) {}
-  create(createVenuePhotoDto: CreateVenuePhotoDto) {
-    return this.venuePhotoModel.create(createVenuePhotoDto);
+  
+  async create(createVenuePhotoDto: CreateVenuePhotoDto, image: any) {
+    const fileName = await this.fileService.saveFile(image);
+    
+    return this.venuePhotoModel.create({
+      ...createVenuePhotoDto,
+      url: fileName,
+    });
   }
 
   findAll() {
@@ -37,6 +45,6 @@ export class VenuePhotoService {
   }
 
   remove(id: number) {
-    return this.venuePhotoModel.destroy({where:{id}});
+    return this.venuePhotoModel.destroy({ where: { id } });
   }
 }

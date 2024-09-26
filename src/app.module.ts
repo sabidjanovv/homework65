@@ -49,10 +49,16 @@ import { CountryModule } from "./country/country.module";
 import { Country } from "./country/models/country.model";
 import { AdminModule } from './admin/admin.module';
 import { Admin } from "./admin/models/admin.model";
+import { FileModule } from './file/file.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "node:path";
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "static")
+    }),
     SequelizeModule.forRoot({
       dialect: "postgres",
       host: process.env.POSTGRES_HOST,
@@ -114,6 +120,7 @@ import { Admin } from "./admin/models/admin.model";
     CustomerAddressModule,
     CountryModule,
     AdminModule,
+    FileModule,
   ],
   controllers: [],
   providers: [],

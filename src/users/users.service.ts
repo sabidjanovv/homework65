@@ -8,7 +8,6 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { User } from "./models/user.model";
 import { RolesService } from "src/roles/roles.service";
-import { Roles } from "src/roles/models/roles.model";
 import { AddRemoveRoleDto } from "./dto/add-remove-role.dto";
 import { ActivateUserDto } from "./dto/activate-user.dto";
 
