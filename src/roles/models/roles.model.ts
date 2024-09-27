@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import {
   BelongsToMany,
   Column,
@@ -15,6 +16,10 @@ interface IRolesCreationAttr {
 
 @Table({ tableName: "roles", timestamps: false })
 export class Roles extends Model<Roles, IRolesCreationAttr> {
+  @ApiProperty({
+    example: 1,
+    description: "ROLEning unical ID raqami (autoIncrement)",
+  })
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -22,6 +27,10 @@ export class Roles extends Model<Roles, IRolesCreationAttr> {
   })
   id: number;
 
+  @ApiProperty({
+    example: "admin",
+    description: "Rolening nomi",
+  })
   @Column({
     type: DataType.STRING,
     unique: true,
@@ -29,6 +38,10 @@ export class Roles extends Model<Roles, IRolesCreationAttr> {
   })
   value: string;
 
+  @ApiProperty({
+    example: "Admin rolidagi foydalanuvchilarni o'zgartirish uchun",
+    description: "Rolning tavsifi",
+  })
   @Column({
     type: DataType.STRING,
   })

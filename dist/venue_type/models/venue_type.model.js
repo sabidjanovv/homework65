@@ -13,10 +13,15 @@ exports.VenueType = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const venue_model_1 = require("../../venue/models/venue.model");
 const venue_venue_type_model_1 = require("../../venue_venue_type/models/venue_venue_type.model");
+const swagger_1 = require("@nestjs/swagger");
 let VenueType = class VenueType extends sequelize_typescript_1.Model {
 };
 exports.VenueType = VenueType;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Unique ID of the venue type (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -25,8 +30,12 @@ __decorate([
     __metadata("design:type", Number)
 ], VenueType.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Concert Hall",
+        description: "Name of the venue type",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING(100),
+        type: sequelize_typescript_1.DataType.STRING,
         allowNull: false,
         unique: true,
     }),

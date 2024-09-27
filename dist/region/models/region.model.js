@@ -14,10 +14,15 @@ const sequelize_typescript_1 = require("sequelize-typescript");
 const customer_address_model_1 = require("../../customer_address/models/customer_address.model");
 const district_model_1 = require("../../district/models/district.model");
 const venue_model_1 = require("../../venue/models/venue.model");
+const swagger_1 = require("@nestjs/swagger");
 let Region = class Region extends sequelize_typescript_1.Model {
 };
 exports.Region = Region;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Mintaqaning unikal ID raqami (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -26,6 +31,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Region.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Toshkent",
+        description: "Mintaqaning nomi",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(100),
         allowNull: false,

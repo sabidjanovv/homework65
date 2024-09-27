@@ -52,6 +52,8 @@ import { Admin } from "./admin/models/admin.model";
 import { FileModule } from './file/file.module';
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "node:path";
+import { BookingModule } from './booking/booking.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -121,6 +123,8 @@ import { join } from "node:path";
     CountryModule,
     AdminModule,
     FileModule,
+    BookingModule,
+    CartModule,
   ],
   controllers: [],
   providers: [],

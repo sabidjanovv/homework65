@@ -10,12 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VenuePhoto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const sequelize_typescript_1 = require("sequelize-typescript");
 const venue_model_1 = require("../../venue/models/venue.model");
 let VenuePhoto = class VenuePhoto extends sequelize_typescript_1.Model {
 };
 exports.VenuePhoto = VenuePhoto;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Rasmlarning unical ID raqami (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -24,6 +29,10 @@ __decorate([
     __metadata("design:type", Number)
 ], VenuePhoto.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Rasm tegishli bo'lgan VenueId",
+    }),
     (0, sequelize_typescript_1.ForeignKey)(() => venue_model_1.Venue),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
@@ -31,6 +40,10 @@ __decorate([
     __metadata("design:type", Number)
 ], VenuePhoto.prototype, "venueId", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "image1.jpg",
+        description: "Rasmning URL",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
     }),

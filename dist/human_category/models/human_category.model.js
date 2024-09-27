@@ -12,10 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.HumanCategory = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const event_model_1 = require("../../event/models/event.model");
+const swagger_1 = require("@nestjs/swagger");
 let HumanCategory = class HumanCategory extends sequelize_typescript_1.Model {
 };
 exports.HumanCategory = HumanCategory;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Kategoriya uchun unikal ID raqami",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -24,28 +29,44 @@ __decorate([
     __metadata("design:type", Number)
 ], HumanCategory.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Children",
+        description: "Kategoriya nomi",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING(100),
+        type: sequelize_typescript_1.DataType.STRING,
         allowNull: false,
         unique: true,
     }),
     __metadata("design:type", String)
 ], HumanCategory.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 6,
+        description: "Kategoriya uchun boshlanish yoshi",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.SMALLINT,
+        type: sequelize_typescript_1.DataType.INTEGER,
     }),
     __metadata("design:type", Number)
 ], HumanCategory.prototype, "start_age", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 12,
+        description: "Kategoriya uchun tugash yoshi",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.SMALLINT,
+        type: sequelize_typescript_1.DataType.INTEGER,
     }),
     __metadata("design:type", Number)
 ], HumanCategory.prototype, "finish_age", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Jinsi (0: ayol, 1: erkak)",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.SMALLINT,
+        type: sequelize_typescript_1.DataType.INTEGER,
     }),
     __metadata("design:type", Number)
 ], HumanCategory.prototype, "gender", void 0);

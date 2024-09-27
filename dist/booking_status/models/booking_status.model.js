@@ -11,10 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingStatus = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const swagger_1 = require("@nestjs/swagger");
 let BookingStatus = class BookingStatus extends sequelize_typescript_1.Model {
 };
 exports.BookingStatus = BookingStatus;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Unique ID of the booking status (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -23,6 +28,10 @@ __decorate([
     __metadata("design:type", Number)
 ], BookingStatus.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Confirmed",
+        description: "Status of the booking",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false,

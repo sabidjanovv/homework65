@@ -1,12 +1,13 @@
-import { LanguageService } from './language.service';
-import { CreateLanguageDto } from './dto/create-language.dto';
-import { UpdateLanguageDto } from './dto/update-language.dto';
+import { LanguageService } from "./language.service";
+import { CreateLanguageDto } from "./dto/create-language.dto";
+import { UpdateLanguageDto } from "./dto/update-language.dto";
+import { Language } from "./models/language.model";
 export declare class LanguageController {
     private readonly languageService;
     constructor(languageService: LanguageService);
-    create(createLanguageDto: CreateLanguageDto): Promise<import("./models/language.model").Language>;
-    findAll(): Promise<import("./models/language.model").Language[]>;
-    findOne(id: number): Promise<import("./models/language.model").Language>;
-    update(id: number, updateLanguageDto: UpdateLanguageDto): Promise<import("./models/language.model").Language>;
+    create(createLanguageDto: CreateLanguageDto): Promise<Language>;
+    findAll(): Promise<Language[]>;
+    findOne(id: number): Promise<Language>;
+    update(id: number, updateLanguageDto: UpdateLanguageDto): Promise<Language>;
     remove(id: number): Promise<number>;
 }

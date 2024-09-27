@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Language = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const sequelize_typescript_1 = require("sequelize-typescript");
 const customer_model_1 = require("../../customer/models/customer.model");
 const event_model_1 = require("../../event/models/event.model");
@@ -17,6 +18,10 @@ let Language = class Language extends sequelize_typescript_1.Model {
 };
 exports.Language = Language;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Unique ID of the language (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -25,6 +30,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Language.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "English",
+        description: "Name of the language",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false,

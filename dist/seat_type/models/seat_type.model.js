@@ -12,10 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeatType = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const seat_model_1 = require("../../seat/models/seat.model");
+const swagger_1 = require("@nestjs/swagger");
 let SeatType = class SeatType extends sequelize_typescript_1.Model {
 };
 exports.SeatType = SeatType;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "O'rin turining unikal ID raqami (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -24,8 +29,12 @@ __decorate([
     __metadata("design:type", Number)
 ], SeatType.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "VIP",
+        description: "O'rin turining nomi",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING(100),
+        type: sequelize_typescript_1.DataType.STRING,
         allowNull: false,
         unique: true,
     }),

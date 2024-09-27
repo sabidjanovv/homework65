@@ -12,10 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TicketStatus = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const ticket_model_1 = require("../../ticket/models/ticket.model");
+const swagger_1 = require("@nestjs/swagger");
 let TicketStatus = class TicketStatus extends sequelize_typescript_1.Model {
 };
 exports.TicketStatus = TicketStatus;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Unique ID of the ticket status (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -24,8 +29,13 @@ __decorate([
     __metadata("design:type", Number)
 ], TicketStatus.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Open",
+        description: "Status of the ticket",
+    }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING(),
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false,
     }),
     __metadata("design:type", String)
 ], TicketStatus.prototype, "name", void 0);

@@ -12,6 +12,7 @@ interface VenueCreationAttr {
     site: string;
     phone: string;
     regionId: number;
+    districtId: number;
 }
 export declare class Venue extends Model<Venue, VenueCreationAttr> {
     id: number;

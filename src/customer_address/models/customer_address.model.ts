@@ -6,6 +6,7 @@ import {
   Model,
   Table,
 } from "sequelize-typescript";
+import { ApiProperty } from "@nestjs/swagger";
 import { Country } from "src/country/models/country.model";
 import { Customer } from "src/customer/models/customer.model";
 import { District } from "src/district/models/district.model";
@@ -30,6 +31,10 @@ export class CustomerAddress extends Model<
   CustomerAddress,
   ICustomerAddressAttr
 > {
+  @ApiProperty({
+    example: 1,
+    description: "Unique ID for the customer address (auto-increment)",
+  })
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -37,70 +42,65 @@ export class CustomerAddress extends Model<
   })
   id: number;
 
+  @ApiProperty({ example: 1, description: "Customer ID" })
   @ForeignKey(() => Customer)
-  @Column({
-    type: DataType.INTEGER,
-  })
+  @Column({ type: DataType.INTEGER })
   customerId: number;
   @BelongsTo(() => Customer)
   customer: Customer;
 
-  @Column({
-    type: DataType.STRING,
-  })
+  @ApiProperty({ example: "Home", description: "Address name" })
+  @Column({ type: DataType.STRING })
   name: string;
 
+  @ApiProperty({ example: 1, description: "Country ID" })
   @ForeignKey(() => Country)
-  @Column({
-    type: DataType.INTEGER,
-  })
+  @Column({ type: DataType.INTEGER })
   countryId: number;
   @BelongsTo(() => Country)
   country: Country;
 
+  @ApiProperty({ example: 2, description: "Region ID" })
   @ForeignKey(() => Region)
-  @Column({
-    type: DataType.INTEGER,
-  })
+  @Column({ type: DataType.INTEGER })
   regionId: number;
   @BelongsTo(() => Region)
   region: Region;
 
+  @ApiProperty({ example: 3, description: "District ID" })
   @ForeignKey(() => District)
-  @Column({
-    type: DataType.INTEGER,
-  })
+  @Column({ type: DataType.INTEGER })
   districtId: number;
   @BelongsTo(() => District)
   district: District;
 
-  @Column({
-    type: DataType.STRING,
-  })
+  @ApiProperty({ example: "Main Street", description: "Street name" })
+  @Column({ type: DataType.STRING })
   street: string;
 
-  @Column({
-    type: DataType.STRING,
-  })
+  @ApiProperty({ example: "15", description: "House number" })
+  @Column({ type: DataType.STRING })
   house: string;
 
-  @Column({
-    type: DataType.STRING,
-  })
+  @ApiProperty({ example: "45A", description: "Flat number" })
+  @Column({ type: DataType.STRING })
   flat: string;
 
-  @Column({
-    type: DataType.STRING,
+  @ApiProperty({
+    example: "41.40338, 2.17403",
+    description: "Geolocation coordinates",
   })
+  @Column({ type: DataType.STRING })
   location: string;
 
-  @Column({
-    type: DataType.STRING,
-  })
+  @ApiProperty({ example: "12345", description: "Postal code" })
+  @Column({ type: DataType.STRING })
   post_index: string;
 
-  @Column({
-    type: DataType.TEXT,
+  @ApiProperty({
+    example: "Near central park",
+    description: "Additional information",
   })
+  @Column({ type: DataType.TEXT })
   info: string;
 }

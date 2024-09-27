@@ -1,6 +1,4 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateLanguageDto } from './create-language.dto';
 
-export class UpdateLanguageDto extends PartialType(CreateLanguageDto) {
-    name?: string;
-}
+export class UpdateLanguageDto extends PartialType(CreateLanguageDto) {}

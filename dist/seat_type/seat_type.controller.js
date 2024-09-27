@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const seat_type_service_1 = require("./seat_type.service");
 const create_seat_type_dto_1 = require("./dto/create-seat_type.dto");
 const update_seat_type_dto_1 = require("./dto/update-seat_type.dto");
+const swagger_1 = require("@nestjs/swagger");
+const seat_type_model_1 = require("./models/seat_type.model");
 let SeatTypeController = class SeatTypeController {
     constructor(seatTypeService) {
         this.seatTypeService = seatTypeService;
@@ -42,6 +44,12 @@ let SeatTypeController = class SeatTypeController {
 };
 exports.SeatTypeController = SeatTypeController;
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Yangi o'rin turini qo'shish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: "O'rin turi yaratildi",
+        type: seat_type_model_1.SeatType,
+    }),
     (0, common_1.Post)("create"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -49,12 +57,24 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SeatTypeController.prototype, "createSeatTypeDto", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Barcha o'rin turlarini ko'rish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "O'rin turlarining ro'yxati",
+        type: [seat_type_model_1.SeatType],
+    }),
     (0, common_1.Get)("all"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SeatTypeController.prototype, "getAllSeatType", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "O'rin turini nomi bo'yicha qidirish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "O'rin turini nomi bo'yicha olish",
+        type: [seat_type_model_1.SeatType],
+    }),
     (0, common_1.Get)("search"),
     __param(0, (0, common_1.Query)("name")),
     __metadata("design:type", Function),
@@ -62,6 +82,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SeatTypeController.prototype, "getSeatTypeByName", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "O'rin turini ID bo'yicha olish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "O'rin turini ID bo'yicha olish",
+        type: seat_type_model_1.SeatType,
+    }),
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -69,6 +95,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SeatTypeController.prototype, "getSeatTypeById", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "O'rin turini ID bo'yicha o'chirish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "O'rin turi o'chirildi",
+        type: seat_type_model_1.SeatType,
+    }),
     (0, common_1.Delete)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -76,6 +108,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SeatTypeController.prototype, "deleteSeatType", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "O'rin turini ID bo'yicha yangilash" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "O'rin turi yangilandi",
+        type: seat_type_model_1.SeatType,
+    }),
     (0, common_1.Patch)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
@@ -84,6 +122,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SeatTypeController.prototype, "updateSeatType", null);
 exports.SeatTypeController = SeatTypeController = __decorate([
+    (0, swagger_1.ApiTags)("O'rin turlari"),
     (0, common_1.Controller)("seat-type"),
     __metadata("design:paramtypes", [seat_type_service_1.SeatTypeService])
 ], SeatTypeController);

@@ -1,3 +1,4 @@
+import { ApiOperation, ApiProperty } from "@nestjs/swagger";
 import {
   BelongsTo,
   Column,
@@ -15,6 +16,10 @@ interface VenuePhotoCreationAttr {
 
 @Table({ tableName: "venue_photo", timestamps: false })
 export class VenuePhoto extends Model<VenuePhoto, VenuePhotoCreationAttr> {
+  @ApiProperty({
+    example: 1,
+    description: "Rasmlarning unical ID raqami (autoIncrement)",
+  })
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -22,12 +27,20 @@ export class VenuePhoto extends Model<VenuePhoto, VenuePhotoCreationAttr> {
   })
   id: number;
 
+  @ApiProperty({
+    example: 1,
+    description: "Rasm tegishli bo'lgan VenueId",
+  })
   @ForeignKey(() => Venue)
   @Column({
     type: DataType.INTEGER,
   })
   venueId: number;
 
+  @ApiProperty({
+    example: "image1.jpg",
+    description: "Rasmning URL",
+  })
   @Column({
     type: DataType.STRING(),
   })

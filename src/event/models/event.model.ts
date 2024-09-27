@@ -1,111 +1,122 @@
-import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  HasMany,
+  Model,
+  Table,
+} from "sequelize-typescript";
 import { EventType } from "src/event_type/models/event_type.model";
 import { HumanCategory } from "src/human_category/models/human_category.model";
 import { Language } from "src/language/models/language.model";
 import { Ticket } from "src/ticket/models/ticket.model";
 import { Venue } from "src/venue/models/venue.model";
+import { ApiProperty } from "@nestjs/swagger";
 
-interface IEventCreationAttr{
-    name: string;
-    photo: string;
-    start_date: Date;
-    start_time: string;
-    finish_date: Date;
-    finish_time: string;
-    info: string;
-    eventTypeId: number;
-    humanCategoryId: number;
-    venueId: number;
-    languageId: number;
-    release_date: Date;
+interface IEventCreationAttr {
+  name: string;
+  photo: string;
+  start_date: Date;
+  start_time: string;
+  finish_date: Date;
+  finish_time: string;
+  info: string;
+  eventTypeId: number;
+  humanCategoryId: number;
+  venueId: number;
+  languageId: number;
+  release_date: Date;
 }
-
 
 @Table({ tableName: "events" })
 export class Event extends Model<Event, IEventCreationAttr> {
-  @Column({
-    type: DataType.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
+  @ApiProperty({
+    example: 1,
+    description: "Unique ID of the event (autoIncrement)",
   })
+  @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
   id: number;
 
-  @Column({
-    type: DataType.STRING,
-  })
+  @ApiProperty({ example: "Concert", description: "Event name" })
+  @Column({ type: DataType.STRING })
   name: string;
 
-  @Column({
-    type: DataType.STRING,
+  @ApiProperty({
+    example: "https://example.com/photo.jpg",
+    description: "Event photo URL",
   })
+  @Column({ type: DataType.STRING })
   photo: string;
 
-  @Column({
-    type: DataType.DATE,
+  @ApiProperty({
+    example: "2024-09-30",
+    description: "Start date of the event",
   })
+  @Column({ type: DataType.DATE })
   start_date: Date;
 
-  @Column({
-    type: DataType.TIME,
-  })
+  @ApiProperty({ example: "18:00:00", description: "Start time of the event" })
+  @Column({ type: DataType.TIME })
   start_time: string;
 
-  @Column({
-    type: DataType.DATE,
+  @ApiProperty({
+    example: "2024-10-01",
+    description: "Finish date of the event",
   })
+  @Column({ type: DataType.DATE })
   finish_date: Date;
 
-  @Column({
-    type: DataType.TIME,
-  })
+  @ApiProperty({ example: "20:00:00", description: "Finish time of the event" })
+  @Column({ type: DataType.TIME })
   finish_time: string;
 
-  @Column({
-    type: DataType.TEXT,
+  @ApiProperty({
+    example: "An exciting concert with famous artists.",
+    description: "Event information",
   })
+  @Column({ type: DataType.TEXT })
   info: string;
 
-  @ForeignKey(()=> EventType)
-  @Column({
-      type: DataType.INTEGER, 
-      allowNull: false
-    })
+  @ForeignKey(() => EventType)
+  @ApiProperty({ example: 1, description: "ID of the event type" })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   eventTypeId: number;
+
   @BelongsTo(() => EventType)
   eventType: EventType;
 
   @ForeignKey(() => HumanCategory)
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-  })
+  @ApiProperty({ example: 1, description: "ID of the human category" })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   humanCategoryId: number;
+
   @BelongsTo(() => HumanCategory)
   humanCategory: HumanCategory;
 
   @ForeignKey(() => Venue)
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-  })
+  @ApiProperty({ example: 1, description: "ID of the venue" })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   venueId: number;
+
   @BelongsTo(() => Venue)
   venue: Venue;
 
   @ForeignKey(() => Language)
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-  })
+  @ApiProperty({ example: 1, description: "ID of the language" })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   languageId: number;
+
   @BelongsTo(() => Language)
   language: Language;
 
-  @Column({
-    type: DataType.DATE,
+  @ApiProperty({
+    example: "2024-09-01",
+    description: "Release date of the event",
   })
+  @Column({ type: DataType.DATE })
   release_date: Date;
 
-  @HasMany(()=> Ticket)
+  @HasMany(() => Ticket)
   tickets: Ticket[];
 }

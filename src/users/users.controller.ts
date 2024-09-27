@@ -19,6 +19,12 @@ import { User } from './models/user.model';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @ApiOperation({ summary: "Yangi user qo'shish" })
+  @ApiResponse({
+    status: 201,
+    description: "Create User",
+    type: User,
+  })
   @Post("create")
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -49,16 +55,34 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
+  @ApiOperation({ summary: "User ID orqali tahrirlash" })
+  @ApiResponse({
+    status: 200,
+    description: "Update User by ID",
+    type: User,
+  })
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
 
+  @ApiOperation({ summary: "User ID orqali User malumotlarini o'chirish" })
+  @ApiResponse({
+    status: 200,
+    description: "Delete User by ID",
+    type: User,
+  })
   @Delete(":id")
   remove(@Param("id") id: string) {
     return this.usersService.remove(+id);
   }
 
+  @ApiOperation({summary:"Usergs ROLE berish"})
+  @ApiResponse({
+    status: 200,
+    description: "Add role to User",
+    type: User,
+  })
   @Roles("ADMIN", "SUPERADMIN")
   @UseGuards(RolesGuard)
   @HttpCode(200)
@@ -67,6 +91,12 @@ export class UsersController {
     return this.usersService.addRole(addRemoveRoleDto);
   }
 
+  @ApiOperation({summary:"Usergs ROLE o'chirish"})
+  @ApiResponse({
+    status: 200,
+    description: "Remove role from User",
+    type: User,
+  })
   @Roles("SUPERADMIN")
   @UseGuards(RolesGuard)
   @HttpCode(200)
@@ -75,6 +105,12 @@ export class UsersController {
     return this.usersService.removeRole(addRemoveRoleDto);
   }
 
+  @ApiOperation({summary:"Foydalanuvchi faollikini yoki faol emasni o'zgartirish"})
+  @ApiResponse({
+    status: 200,
+    description: "Activate/Deactivate User",
+    type: User,
+  })
   @Roles("SUPERADMIN")
   @UseGuards(RolesGuard)
   @HttpCode(200)

@@ -17,11 +17,13 @@ const common_1 = require("@nestjs/common");
 const venue_type_service_1 = require("./venue_type.service");
 const create_venue_type_dto_1 = require("./dto/create-venue_type.dto");
 const update_venue_type_dto_1 = require("./dto/update-venue_type.dto");
+const swagger_1 = require("@nestjs/swagger");
+const venue_type_model_1 = require("./models/venue_type.model");
 let VenueTypeController = class VenueTypeController {
     constructor(venueTypeService) {
         this.venueTypeService = venueTypeService;
     }
-    async createVenueTypeDto(createVenueTypeDto) {
+    async createVenueType(createVenueTypeDto) {
         return this.venueTypeService.createVenueType(createVenueTypeDto);
     }
     async getAllVenueType() {
@@ -42,19 +44,37 @@ let VenueTypeController = class VenueTypeController {
 };
 exports.VenueTypeController = VenueTypeController;
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Create a new venue type" }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: "Create Venue Type",
+        type: venue_type_model_1.VenueType,
+    }),
     (0, common_1.Post)("create"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_venue_type_dto_1.CreateVenueTypeDto]),
     __metadata("design:returntype", Promise)
-], VenueTypeController.prototype, "createVenueTypeDto", null);
+], VenueTypeController.prototype, "createVenueType", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Get all venue types" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "List of venue types",
+        type: [venue_type_model_1.VenueType],
+    }),
     (0, common_1.Get)("all"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], VenueTypeController.prototype, "getAllVenueType", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Search venue type by name" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Get venue type by name",
+        type: venue_type_model_1.VenueType,
+    }),
     (0, common_1.Get)("search"),
     __param(0, (0, common_1.Query)("name")),
     __metadata("design:type", Function),
@@ -62,6 +82,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], VenueTypeController.prototype, "getVenueTypeByName", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Get venue type by ID" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Get venue type by ID",
+        type: venue_type_model_1.VenueType,
+    }),
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -69,6 +95,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], VenueTypeController.prototype, "getVenueTypeById", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Delete venue type by ID" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Delete venue type",
+        type: venue_type_model_1.VenueType,
+    }),
     (0, common_1.Delete)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -76,6 +108,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], VenueTypeController.prototype, "deleteVenueType", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Update venue type by ID" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Update venue type",
+        type: venue_type_model_1.VenueType,
+    }),
     (0, common_1.Patch)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
@@ -84,6 +122,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], VenueTypeController.prototype, "updateVenueType", null);
 exports.VenueTypeController = VenueTypeController = __decorate([
+    (0, swagger_1.ApiTags)("Venue Types"),
     (0, common_1.Controller)("venue-type"),
     __metadata("design:paramtypes", [venue_type_service_1.VenueTypeService])
 ], VenueTypeController);

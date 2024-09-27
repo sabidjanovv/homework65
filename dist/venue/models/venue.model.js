@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Venue = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const sequelize_typescript_1 = require("sequelize-typescript");
 const district_model_1 = require("../../district/models/district.model");
 const event_model_1 = require("../../event/models/event.model");
@@ -22,6 +23,10 @@ let Venue = class Venue extends sequelize_typescript_1.Model {
 };
 exports.Venue = Venue;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Venuening unical ID raqami (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -30,6 +35,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Venue.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Venue 1",
+        description: "Venune nomi",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
         allowNull: false,
@@ -37,36 +46,60 @@ __decorate([
     __metadata("design:type", String)
 ], Venue.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Venue 1 address",
+        description: "Venune manzilasi",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
     }),
     __metadata("design:type", String)
 ], Venue.prototype, "address", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Venue 1 location",
+        description: "Venune manzilining joylashuvi",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
     }),
     __metadata("design:type", String)
 ], Venue.prototype, "location", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Venue 1 site",
+        description: "Venune elektron sayiti",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
     }),
     __metadata("design:type", String)
 ], Venue.prototype, "site", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Venue 1 phone",
+        description: "Venune telefon raqami",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
     }),
     __metadata("design:type", String)
 ], Venue.prototype, "phone", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "[123.85233.9845, 1236.987145.98426]",
+        description: "Venueni joylashuvi",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.ARRAY(sequelize_typescript_1.DataType.STRING),
     }),
     __metadata("design:type", Array)
 ], Venue.prototype, "schema", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Venune boshqa regionning unical ID raqami",
+    }),
     (0, sequelize_typescript_1.ForeignKey)(() => region_model_1.Region),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
@@ -78,6 +111,10 @@ __decorate([
     __metadata("design:type", region_model_1.Region)
 ], Venue.prototype, "region", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "District(tuman) ID raqami",
+    }),
     (0, sequelize_typescript_1.ForeignKey)(() => district_model_1.District),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,

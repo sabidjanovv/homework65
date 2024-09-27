@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { Table, Column, Model, DataType, HasMany, ForeignKey, BelongsTo, BelongsToMany } from "sequelize-typescript";
 import { District } from "src/district/models/district.model";
 import { Event } from "src/event/models/event.model";
@@ -14,10 +15,15 @@ interface VenueCreationAttr{
     site: string;
     phone: string;
     regionId:number;
+    districtId:number;
 }
 
 @Table({ tableName: "venue", timestamps: false })
 export class Venue extends Model<Venue, VenueCreationAttr> {
+  @ApiProperty({
+    example: 1,
+    description: "Venuening unical ID raqami (autoIncrement)",
+  })
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -25,37 +31,65 @@ export class Venue extends Model<Venue, VenueCreationAttr> {
   })
   id: number;
 
+  @ApiProperty({
+    example: "Venue 1",
+    description: "Venune nomi",
+  })
   @Column({
     type: DataType.STRING(),
     allowNull: false,
   })
   name: string;
 
+  @ApiProperty({
+    example: "Venue 1 address",
+    description: "Venune manzilasi",
+  })
   @Column({
     type: DataType.STRING(),
   })
   address: string;
 
+  @ApiProperty({
+    example: "Venue 1 location",
+    description: "Venune manzilining joylashuvi",
+  })
   @Column({
     type: DataType.STRING(),
   })
   location: string;
 
+  @ApiProperty({
+    example: "Venue 1 site",
+    description: "Venune elektron sayiti",
+  })
   @Column({
     type: DataType.STRING(),
   })
   site: string;
 
+  @ApiProperty({
+    example: "Venue 1 phone",
+    description: "Venune telefon raqami",
+  })
   @Column({
     type: DataType.STRING(),
   })
   phone: string;
 
+  @ApiProperty({
+    example: "[123.85233.9845, 1236.987145.98426]",
+    description: "Venueni joylashuvi",
+  })
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
   schema: string[];
 
+  @ApiProperty({
+    example: 1,
+    description: "Venune boshqa regionning unical ID raqami",
+  })
   @ForeignKey(() => Region)
   @Column({
     type: DataType.INTEGER,
@@ -64,6 +98,10 @@ export class Venue extends Model<Venue, VenueCreationAttr> {
   @BelongsTo(() => Region)
   region: Region;
 
+  @ApiProperty({
+    example: 1,
+    description: "District(tuman) ID raqami",
+  })
   @ForeignKey(() => District)
   @Column({
     type: DataType.INTEGER,
@@ -81,6 +119,6 @@ export class Venue extends Model<Venue, VenueCreationAttr> {
   @BelongsToMany(() => VenueType, () => VenueVenueType)
   venue_types: VenueType[];
 
-  @HasMany(()=> Event)
+  @HasMany(() => Event)
   events: Event[];
 }

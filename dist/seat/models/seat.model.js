@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Seat = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const sequelize_typescript_1 = require("sequelize-typescript");
 const seat_type_model_1 = require("../../seat_type/models/seat_type.model");
 const ticket_model_1 = require("../../ticket/models/ticket.model");
@@ -18,6 +19,10 @@ let Seat = class Seat extends sequelize_typescript_1.Model {
 };
 exports.Seat = Seat;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Unique ID of the seat (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -26,6 +31,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Seat.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "A",
+        description: "Sector of the seat",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false,
@@ -33,6 +42,10 @@ __decorate([
     __metadata("design:type", String)
 ], Seat.prototype, "sector", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Row number of the seat",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         allowNull: false,
@@ -40,6 +53,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Seat.prototype, "row_number", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 5,
+        description: "Seat number",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         allowNull: false,
@@ -48,6 +65,10 @@ __decorate([
 ], Seat.prototype, "number", void 0);
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => venue_model_1.Venue),
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "ID of the venue",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         allowNull: false,
@@ -60,6 +81,10 @@ __decorate([
 ], Seat.prototype, "venue", void 0);
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => seat_type_model_1.SeatType),
+    (0, swagger_1.ApiProperty)({
+        example: 2,
+        description: "ID of the seat type",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         allowNull: false,
@@ -71,6 +96,10 @@ __decorate([
     __metadata("design:type", seat_type_model_1.SeatType)
 ], Seat.prototype, "seatType", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "1A",
+        description: "Location in the seating schema",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
     }),

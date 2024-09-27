@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const district_service_1 = require("./district.service");
 const create_district_dto_1 = require("./dto/create-district.dto");
 const update_district_dto_1 = require("./dto/update-district.dto");
+const swagger_1 = require("@nestjs/swagger");
+const district_model_1 = require("./models/district.model");
 let DistrictController = class DistrictController {
     constructor(districtService) {
         this.districtService = districtService;
@@ -39,6 +41,12 @@ let DistrictController = class DistrictController {
 };
 exports.DistrictController = DistrictController;
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Create a new district" }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: "District created successfully",
+        type: district_model_1.District,
+    }),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -46,35 +54,60 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], DistrictController.prototype, "create", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Get all districts" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "List of districts",
+        type: [district_model_1.District],
+    }),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], DistrictController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, swagger_1.ApiOperation)({ summary: "Get a district by ID" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "District found",
+        type: district_model_1.District,
+    }),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], DistrictController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, swagger_1.ApiOperation)({ summary: "Update a district by ID" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "District updated successfully",
+        type: district_model_1.District,
+    }),
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_district_dto_1.UpdateDistrictDto]),
     __metadata("design:returntype", void 0)
 ], DistrictController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, swagger_1.ApiOperation)({ summary: "Delete a district by ID" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "District deleted successfully",
+        type: district_model_1.District,
+    }),
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], DistrictController.prototype, "remove", null);
 exports.DistrictController = DistrictController = __decorate([
-    (0, common_1.Controller)('district'),
+    (0, swagger_1.ApiTags)("Districts"),
+    (0, common_1.Controller)("district"),
     __metadata("design:paramtypes", [district_service_1.DistrictService])
 ], DistrictController);
 //# sourceMappingURL=district.controller.js.map

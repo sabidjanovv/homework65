@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const human_category_service_1 = require("./human_category.service");
 const create_human_category_dto_1 = require("./dto/create-human_category.dto");
 const update_human_category_dto_1 = require("./dto/update-human_category.dto");
+const swagger_1 = require("@nestjs/swagger");
+const human_category_model_1 = require("./models/human_category.model");
 let HumanCategoryController = class HumanCategoryController {
     constructor(humanCategoryService) {
         this.humanCategoryService = humanCategoryService;
@@ -42,6 +44,12 @@ let HumanCategoryController = class HumanCategoryController {
 };
 exports.HumanCategoryController = HumanCategoryController;
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Yangi kategoriya yaratish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: "Yangi kategoriya yaratildi",
+        type: human_category_model_1.HumanCategory,
+    }),
     (0, common_1.Post)("create"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -49,12 +57,24 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], HumanCategoryController.prototype, "createHumanCategory", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Barcha kategoriyalarni ko'rish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Kategoriyalar ro'yxati",
+        type: [human_category_model_1.HumanCategory],
+    }),
     (0, common_1.Get)("all"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], HumanCategoryController.prototype, "getAllHumanCategory", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Kategoriya nomi bo'yicha qidirish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Kategoriya topildi",
+        type: human_category_model_1.HumanCategory,
+    }),
     (0, common_1.Get)("search"),
     __param(0, (0, common_1.Query)("name")),
     __metadata("design:type", Function),
@@ -62,6 +82,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], HumanCategoryController.prototype, "getHumanCategoryByName", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "ID bo'yicha kategoriya topish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Kategoriya topildi",
+        type: human_category_model_1.HumanCategory,
+    }),
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -69,6 +95,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], HumanCategoryController.prototype, "getHumanCategoryById", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "ID orqali kategoriyani o'chirish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Kategoriya o'chirildi",
+        type: human_category_model_1.HumanCategory,
+    }),
     (0, common_1.Delete)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -76,6 +108,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], HumanCategoryController.prototype, "deleteHumanCategory", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "ID orqali kategoriyani yangilash" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Kategoriya yangilandi",
+        type: human_category_model_1.HumanCategory,
+    }),
     (0, common_1.Patch)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
@@ -84,6 +122,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], HumanCategoryController.prototype, "updateHumanCategory", null);
 exports.HumanCategoryController = HumanCategoryController = __decorate([
+    (0, swagger_1.ApiTags)("Human Categories"),
     (0, common_1.Controller)("human-category"),
     __metadata("design:paramtypes", [human_category_service_1.HumanCategoryService])
 ], HumanCategoryController);

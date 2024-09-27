@@ -18,6 +18,7 @@ const venue_service_1 = require("./venue.service");
 const create_venue_dto_1 = require("./dto/create-venue.dto");
 const update_venue_dto_1 = require("./dto/update-venue.dto");
 const swagger_1 = require("@nestjs/swagger");
+const venue_model_1 = require("./models/venue.model");
 let VenueController = class VenueController {
     constructor(venueService) {
         this.venueService = venueService;
@@ -40,6 +41,12 @@ let VenueController = class VenueController {
 };
 exports.VenueController = VenueController;
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Yangi venue qo'shish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: "Create Venue",
+        type: venue_model_1.Venue,
+    }),
     (0, common_1.Post)("create"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -47,12 +54,24 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "create", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Barcha venuelar ro'yxatini ko'rish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "List of venues",
+        type: [venue_model_1.Venue],
+    }),
     (0, common_1.Get)("all"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "findAll", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Venue ID bo'yicha ko'rish" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Get Venue by ID",
+        type: venue_model_1.Venue,
+    }),
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -60,6 +79,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "findOne", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Venue ID bo'yicha tahrirlash" }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Update Venue by ID",
+        type: venue_model_1.Venue,
+    }),
     (0, common_1.Patch)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
@@ -68,6 +93,8 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], VenueController.prototype, "update", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: "Venue ID bo'yicha o'chirish" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Delete Venue by ID" }),
     (0, common_1.Delete)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),

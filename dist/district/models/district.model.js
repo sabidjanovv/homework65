@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.District = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const sequelize_typescript_1 = require("sequelize-typescript");
 const customer_address_model_1 = require("../../customer_address/models/customer_address.model");
 const region_model_1 = require("../../region/models/region.model");
@@ -18,6 +19,10 @@ let District = class District extends sequelize_typescript_1.Model {
 };
 exports.District = District;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Unique ID of the district (autoIncrement)",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
         autoIncrement: true,
@@ -27,12 +32,20 @@ __decorate([
 ], District.prototype, "id", void 0);
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => region_model_1.Region),
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Region ID to which the district belongs",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.INTEGER,
     }),
     __metadata("design:type", Number)
 ], District.prototype, "regionId", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "District Name",
+        description: "Name of the district",
+    }),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(),
     }),

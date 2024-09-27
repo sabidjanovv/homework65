@@ -1,3 +1,6 @@
+import { ApiProperty } from "@nestjs/swagger";
+
 export class CreateLanguageDto {
-    name: string;
+  @ApiProperty({ example: "English", description: "Name of the language" })
+  name: string;
 }

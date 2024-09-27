@@ -10,11 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateVenuePhotoDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateVenuePhotoDto {
 }
 exports.CreateVenuePhotoDto = CreateVenuePhotoDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 1, description: "Venuening Id raqami" }),
+    __metadata("design:type", Number)
+], CreateVenuePhotoDto.prototype, "venue_id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "photo.jpg", description: "Rasmning URLi yoki fayldan yuklash" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
