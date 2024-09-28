@@ -54,6 +54,8 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "node:path";
 import { BookingModule } from './booking/booking.module';
 import { CartModule } from './cart/cart.module';
+import { Cart } from "./cart/models/cart.model";
+import { Booking } from "./booking/models/booking.model";
 
 @Module({
   imports: [
@@ -92,7 +94,9 @@ import { CartModule } from './cart/cart.module';
         CustomerCard,
         CustomerAddress,
         Country,
-        Admin
+        Admin,
+        Cart,
+        Booking
       ],
       autoLoadModels: true,
       sync: { alter: true },

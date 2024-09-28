@@ -1,5 +1,5 @@
 import { Model } from "sequelize-typescript";
-import { Event } from "src/event/models/event.model";
+import { Event } from "../../event/models/event.model";
 interface HumanCategoryAttr {
     name: string;
     start_age: number;

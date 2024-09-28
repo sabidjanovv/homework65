@@ -1,5 +1,5 @@
 import { Table, Column, DataType, Model, HasMany } from "sequelize-typescript";
-import { Event } from "src/event/models/event.model";
+import { Event } from "../../event/models/event.model";
 import { ApiProperty } from "@nestjs/swagger";
 
 interface HumanCategoryAttr {

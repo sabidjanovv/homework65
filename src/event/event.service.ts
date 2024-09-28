@@ -3,8 +3,8 @@ import { CreateEventDto } from "./dto/create-event.dto";
 import { UpdateEventDto } from "./dto/update-event.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { Event } from "./models/event.model";
-import { TicketService } from "src/ticket/ticket.service";
-import { FileService } from "src/file/file.service";
+import { TicketService } from "../ticket/ticket.service";
+import { FileService } from "../file/file.service";
 
 @Injectable()
 export class EventService {

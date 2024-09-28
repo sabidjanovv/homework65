@@ -1,5 +1,5 @@
 import { Model } from "sequelize-typescript";
-import { Ticket } from "src/ticket/models/ticket.model";
+import { Ticket } from "../../ticket/models/ticket.model";
 interface TicketStatusCreationAttr {
     name: string;
 }

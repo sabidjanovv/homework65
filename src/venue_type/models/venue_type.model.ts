@@ -5,8 +5,8 @@ import {
   Model,
   BelongsToMany,
 } from "sequelize-typescript";
-import { Venue } from "src/venue/models/venue.model";
-import { VenueVenueType } from "src/venue_venue_type/models/venue_venue_type.model";
+import { Venue } from "../../venue/models/venue.model";
+import { VenueVenueType } from "../../venue_venue_type/models/venue_venue_type.model";
 import { ApiProperty } from "@nestjs/swagger";
 
 interface VenueTypeAttr {

@@ -1,5 +1,5 @@
 import { Model } from "sequelize-typescript";
-import { Venue } from "src/venue/models/venue.model";
+import { Venue } from "../../venue/models/venue.model";
 interface VenuePhotoCreationAttr {
     venueId: number;
     url: string;

@@ -3,7 +3,7 @@ import { CreateVenuePhotoDto } from "./dto/create-venue_photo.dto";
 import { UpdateVenuePhotoDto } from "./dto/update-venue_photo.dto";
 import { VenuePhoto } from "./models/venue_photo.model";
 import { InjectModel } from "@nestjs/sequelize";
-import { FileService } from "src/file/file.service";
+import { FileService } from "../file/file.service";
 
 @Injectable()
 export class VenuePhotoService {

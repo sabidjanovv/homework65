@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
-import { Customer } from "src/customer/models/customer.model";
-import { Event } from "src/event/models/event.model";
+import { Customer } from "../../customer/models/customer.model";
+import { Event } from "../../event/models/event.model";
 
 interface LanguageCreationAttr {
   name: string;

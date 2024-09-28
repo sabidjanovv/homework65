@@ -7,7 +7,7 @@ import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { User } from "./models/user.model";
-import { RolesService } from "src/roles/roles.service";
+import { RolesService } from "../roles/roles.service";
 import { AddRemoveRoleDto } from "./dto/add-remove-role.dto";
 import { ActivateUserDto } from "./dto/activate-user.dto";
 
@@ -64,7 +64,7 @@ export class UsersService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return {message:"Foydalanuvchi o'chirildi"};
   }
 
   async addRole(addRemoveRoleDto: AddRemoveRoleDto) {

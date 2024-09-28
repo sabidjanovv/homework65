@@ -3,8 +3,8 @@ import { EventService } from './event.service';
 import { EventController } from './event.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Event } from './models/event.model';
-import { TicketModule } from 'src/ticket/ticket.module';
-import { FileModule } from 'src/file/file.module';
+import { TicketModule } from '../ticket/ticket.module';
+import { FileModule } from '../file/file.module';
 
 
 @Module({

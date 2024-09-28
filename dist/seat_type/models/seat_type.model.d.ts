@@ -1,5 +1,5 @@
 import { Model } from "sequelize-typescript";
-import { Seat } from "src/seat/models/seat.model";
+import { Seat } from "../../seat/models/seat.model";
 interface SeatTypeAttr {
     name: string;
 }

@@ -1,7 +1,7 @@
 import { CreateVenuePhotoDto } from "./dto/create-venue_photo.dto";
 import { UpdateVenuePhotoDto } from "./dto/update-venue_photo.dto";
 import { VenuePhoto } from "./models/venue_photo.model";
-import { FileService } from "src/file/file.service";
+import { FileService } from "../file/file.service";
 export declare class VenuePhotoService {
     private venuePhotoModel;
     private readonly fileService;

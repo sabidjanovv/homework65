@@ -61,6 +61,10 @@ const admin_model_1 = require("./admin/models/admin.model");
 const file_module_1 = require("./file/file.module");
 const serve_static_1 = require("@nestjs/serve-static");
 const node_path_1 = require("node:path");
+const booking_module_1 = require("./booking/booking.module");
+const cart_module_1 = require("./cart/cart.module");
+const cart_model_1 = require("./cart/models/cart.model");
+const booking_model_1 = require("./booking/models/booking.model");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -102,7 +106,9 @@ exports.AppModule = AppModule = __decorate([
                     customer_card_model_1.CustomerCard,
                     customer_address_model_1.CustomerAddress,
                     country_model_1.Country,
-                    admin_model_1.Admin
+                    admin_model_1.Admin,
+                    cart_model_1.Cart,
+                    booking_model_1.Booking
                 ],
                 autoLoadModels: true,
                 sync: { alter: true },
@@ -133,6 +139,8 @@ exports.AppModule = AppModule = __decorate([
             country_module_1.CountryModule,
             admin_module_1.AdminModule,
             file_module_1.FileModule,
+            booking_module_1.BookingModule,
+            cart_module_1.CartModule,
         ],
         controllers: [],
         providers: [],

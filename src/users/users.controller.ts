@@ -4,10 +4,10 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AddRemoveRoleDto } from './dto/add-remove-role.dto';
 import { ActivateUserDto } from './dto/activate-user.dto';
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import { SelfGuard } from 'src/guards/self.guard';
-import { Roles } from 'src/decorator/roles-auth.decorator';
-import { RolesGuard } from 'src/guards/roles.guard';
+import { JwtAuthGuard } from '../guards/jwt-auth.guard';
+import { SelfGuard } from '../guards/self.guard';
+import { Roles } from '../decorator/roles-auth.decorator';
+import { RolesGuard } from '../guards/roles.guard';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './models/user.model';
 

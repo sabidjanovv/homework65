@@ -70,13 +70,16 @@ import {
   Column,
   DataType,
   ForeignKey,
+  HasMany,
+  HasOne,
   Model,
   Table,
 } from "sequelize-typescript";
-import { Event } from "src/event/models/event.model";
-import { TicketStatus } from "src/ticket_status/models/ticket_status.model";
+import { Event } from "../../event/models/event.model";
+import { TicketStatus } from "../../ticket_status/models/ticket_status.model";
 import { ApiProperty } from "@nestjs/swagger";
-import { Seat } from "src/seat/models/seat.model";
+import { Seat } from "../../seat/models/seat.model";
+import { Cart } from "../../cart/models/cart.model";
 
 interface ITicketCreationAttr {
   eventId: number;
@@ -137,4 +140,7 @@ export class Ticket extends Model<Ticket, ITicketCreationAttr> {
   @ApiProperty({ example: "Standard", description: "Type of the ticket" })
   @Column({ type: DataType.STRING })
   ticket_type: string;
+
+  @HasMany(()=> Cart)
+  cart: Cart;
 }

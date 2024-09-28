@@ -8,11 +8,11 @@ import { CreateUserDto } from "../users/dto/create-user.dto";
 
 import * as bcrypt from "bcrypt";
 import { JwtService } from "@nestjs/jwt";
-import { User } from "src/users/models/user.model";
+import { User } from "../users/models/user.model";
 import { SignInDto } from "./dto/signin.dto";
-import { AdminService } from "src/admin/admin.service";
-import { CreateAdminDto } from "src/admin/dto/create-admin.dto";
-import { Admin } from "src/admin/models/admin.model";
+import { AdminService } from "../admin/admin.service";
+import { CreateAdminDto } from "../admin/dto/create-admin.dto";
+import { Admin } from "../admin/models/admin.model";
 import { AdminSignInDto } from "./dto/adminSignin.dto";
 
 @Injectable()

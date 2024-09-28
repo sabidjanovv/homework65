@@ -11,9 +11,9 @@ import {
 import { AdminService } from "./admin.service";
 import { CreateAdminDto } from "./dto/create-admin.dto";
 import { UpdateAdminDto } from "./dto/update-admin.dto";
-import { JwtAdminAuthGuard } from "src/guards/jwt-adminAuth.guard";
-import { AdminSelfGuard } from "src/guards/adminSelf.guard";
-import { AdminCreatorGuard } from "src/guards/adminCreator.guard";
+import { JwtAdminAuthGuard } from "../guards/jwt-adminAuth.guard";
+import { AdminSelfGuard } from "../guards/adminSelf.guard";
+import { AdminCreatorGuard } from "../guards/adminCreator.guard";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Admin } from "./models/admin.model";
 

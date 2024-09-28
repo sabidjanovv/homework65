@@ -1,7 +1,7 @@
 import { Model } from "sequelize-typescript";
-import { CustomerAddress } from "src/customer_address/models/customer_address.model";
-import { Region } from "src/region/models/region.model";
-import { Venue } from "src/venue/models/venue.model";
+import { CustomerAddress } from "../../customer_address/models/customer_address.model";
+import { Region } from "../../region/models/region.model";
+import { Venue } from "../../venue/models/venue.model";
 interface DistrictCreationAttr {
     regionId: number;
     name: string;

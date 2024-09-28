@@ -1,5 +1,5 @@
 import { Table, Column, DataType, Model, HasMany } from "sequelize-typescript";
-import { Seat } from "src/seat/models/seat.model";
+import { Seat } from "../../seat/models/seat.model";
 import { ApiProperty } from "@nestjs/swagger";
 
 interface SeatTypeAttr {

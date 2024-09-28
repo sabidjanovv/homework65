@@ -1,6 +1,6 @@
 import { Model } from "sequelize-typescript";
-import { Customer } from "src/customer/models/customer.model";
-import { Event } from "src/event/models/event.model";
+import { Customer } from "../../customer/models/customer.model";
+import { Event } from "../../event/models/event.model";
 interface LanguageCreationAttr {
     name: string;
 }

@@ -1,13 +1,13 @@
 import { Body, Controller, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 import { SignInDto } from './dto/signin.dto';
-import { CreateAdminDto } from "src/admin/dto/create-admin.dto";
+import { CreateAdminDto } from "../admin/dto/create-admin.dto";
 import { AdminSignInDto } from "./dto/adminSignin.dto";
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { JwtAdminAuthGuard } from 'src/guards/jwt-adminAuth.guard';
-import { AdminCreatorGuard } from 'src/guards/adminCreator.guard';
-import { AdminSelfGuard } from 'src/guards/adminSelf.guard';
+import { JwtAdminAuthGuard } from '../guards/jwt-adminAuth.guard';
+import { AdminCreatorGuard } from '../guards/adminCreator.guard';
+import { AdminSelfGuard } from '../guards/adminSelf.guard';
 
 
 @ApiTags("AUTH")

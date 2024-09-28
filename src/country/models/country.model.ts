@@ -1,6 +1,6 @@
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
-import { CustomerAddress } from "src/customer_address/models/customer_address.model";
+import { CustomerAddress } from "../../customer_address/models/customer_address.model";
 
 interface ICountryAttr {
   name: string;

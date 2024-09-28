@@ -8,9 +8,10 @@ import {
   Model,
   Table,
 } from "sequelize-typescript";
-import { CustomerAddress } from "src/customer_address/models/customer_address.model";
-import { CustomerCard } from "src/customer_card/models/customer_card.model";
-import { Language } from "src/language/models/language.model";
+import { CustomerCard } from "../../customer_card/models/customer_card.model";
+import { Language } from "../../language/models/language.model";
+import { CustomerAddress } from "../../customer_address/models/customer_address.model";
+import { Cart } from "../../cart/models/cart.model";
 
 interface ICustomerAttr {
   first_name: string;
@@ -123,4 +124,7 @@ export class Customer extends Model<Customer, ICustomerAttr> {
 
   @HasMany(() => CustomerCard)
   customerCard: CustomerCard;
+
+  @HasMany(()=> Cart)
+  cart: Cart[];
 }
