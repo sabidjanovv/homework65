@@ -30,7 +30,7 @@ describe("Users controller", () => {
   });
 
   describe("create user", () => {
-    describe("when creat user is called", () => {
+    describe("when create user is called", () => {
       let user: User;
       let createUserDto: CreateUserDto;
       beforeAll(async () => {
@@ -67,4 +67,37 @@ describe("Users controller", () => {
       });
     });
   });
+
+  describe("findOne user", () => {
+    describe("when findOne user is called", () => {
+      let user: User;
+      beforeAll(async () => {
+        user = await usersController.findOne("1");
+        console.log(user);
+      });
+      it("than it should call usersService", () => {
+        expect(usersService.findOne).toHaveBeenCalledWith(1);
+      });
+      test("than it should return user", () => {
+        expect(user).toEqual(userStub());
+      });
+    });
+  });
+
+  describe("remove user", () => {
+    describe("when remove user is called", () => {
+      let result: { message: string };
+      beforeAll(async () => {
+        result = await usersController.remove("1");
+        console.log(result);
+      });
+      it("than it should call usersService", () => {
+        expect(usersService.remove).toHaveBeenCalledWith(1);
+      });
+      test("than it should return a success message", () => {
+        expect(result).toEqual({ message: "Foydalanuvchi o'chirildi" });
+      });
+    });
+  });
+
 });

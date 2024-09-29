@@ -56,7 +56,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return this.userModel.findByPk(id,{include: { all: true}});
+    return this.userModel.findOne({where:{id}});
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
