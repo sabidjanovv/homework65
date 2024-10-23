@@ -33,4 +33,9 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   role_value: string;
+
+  @ApiProperty({ example: "true", description: "Foydalanuvchining active yoki active emasligi" })
+  @IsNotEmpty()
+  @IsString()
+  is_active: boolean
 }

@@ -32,8 +32,8 @@ export class UsersService {
     if (!role) {
       throw new BadRequestException("Role not found");
     }
-    await newUser.$set("roles", [role.id]);
-    await newUser.save();
+    // await newUser.$set("roles", [role.id]);
+    // await newUser.save();
     newUser.roles = [role];
     return newUser;
   }
@@ -59,11 +59,18 @@ export class UsersService {
     return this.userModel.findOne({where:{id}});
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    const user = await this.userModel.update(updateUserDto, {
+      where: { id },
+      returning: true,
+    });
+    console.log(user);
+    return user[1][0];
   }
 
+
   remove(id: number) {
+    this.userModel.destroy({where:{id}})
     return {message:"Foydalanuvchi o'chirildi"};
   }
 

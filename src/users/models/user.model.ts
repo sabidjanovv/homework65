@@ -14,6 +14,7 @@ interface IUserCreationAttr {
   email: string;
   password: string;
   role_value: string;
+  is_active: boolean
 }
 
 @Table({ tableName: "users" })

@@ -5,6 +5,7 @@ import { Test } from "@nestjs/testing";
 import { User } from "../models/user.model";
 import { CreateUserDto } from "../dto/create-user.dto";
 import { userStub } from "./stubs/user.stub";
+import { UpdateUserDto } from "../dto/update-user.dto";
 
 jest.mock("../users.service");
 
@@ -39,6 +40,7 @@ describe("Users controller", () => {
           email: userStub().email,
           password: userStub().password,
           role_value: userStub().role_value,
+          is_active: userStub().is_active,
         };
         user = await usersController.create(createUserDto);
         console.log(user);
@@ -99,5 +101,4 @@ describe("Users controller", () => {
       });
     });
   });
-
 });

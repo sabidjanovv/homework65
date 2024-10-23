@@ -64,7 +64,7 @@ export class AuthService {
       email: user.email,
       roles: user.roles,
     };
-    return this.jwtService.sign(payload);
+    return {token: this.jwtService.sign(payload)};
   }
 
   async adminSignUp(createAdminDto: CreateAdminDto) {
